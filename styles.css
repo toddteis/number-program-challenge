@@ -13,3 +13,27 @@ html {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
+
+h1 {
+    margin: 20px;
+}
+
+h2, h3 {
+    margin: 15px;
+}
+
+input {
+    margin: 10px;
+}
+
+button {
+    margin: 5px;
+}
+
+hr {
+    margin: 10px;
+}
+
+p {
+    margin: 5px;
+}
