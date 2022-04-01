@@ -27,7 +27,7 @@ h1 {
     margin: 20px;
 }
 
-h2, h3 {
+h3, h4 {
     margin: 15px;
 }
 
@@ -46,3 +46,13 @@ hr {
 p {
     margin: 5px;
 }
+
+section {
+    padding: 5px;
+}
+
+.timer {
+    display: flex;
+    flex-direction: column;
+}
+
