@@ -7,6 +7,7 @@ const setIntervalDiv = document.getElementById("set-interval");
 const displayTimerDiv = document.getElementById('display-timer-wrapper');
 const numberInDiv = document.getElementById('number-in');
 const displayDiv = document.getElementById('display');
+const displayTimer = document.getElementById('display-timer');
 
 btnTimerSubmit.addEventListener('click', () => {
     const timerTextInput = document.getElementById("timer-text-input").value;
@@ -20,6 +21,7 @@ btnTimerSubmit.addEventListener('click', () => {
         if (!timerInputError.classList.contains('hide')) { timerInputError.classList.toggle('hide') };
         // start interval timer
         timer(setTimerInterval);
+        uiTimer();
         // hide set-interval div, show display-timer div
         toggleIntervalDisplay();
     }
@@ -40,6 +42,17 @@ function toggleIntervalDisplay() {
         displayDiv.classList.remove('hide');
     }
 };
+
+// Timer for the UI.
+
+function uiTimer() {
+    let count = 0;
+    let uiCounter = setInterval(function () {
+        console.log(count);
+        displayTimer.textContent = count;
+        count++;
+    }, 1000);
+}
 
 // outputController: receive output from Core Logic, add html & display on webpage
 
