@@ -32,24 +32,12 @@ h3, h4 {
     margin: 15px;
 }
 
-input {
+input, hr {
     margin: 10px;
 }
 
-button {
+button, p, section {
     margin: 5px;
-}
-
-hr {
-    margin: 10px;
-}
-
-p {
-    margin: 5px;
-}
-
-section {
-    padding: 5px;
 }
 
 button {
