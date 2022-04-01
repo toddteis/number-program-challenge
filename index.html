@@ -13,27 +13,29 @@
     <main>
         <h1>Number Program Challenge</h1>
         <section class="timer" id="timer">
-            <div class="set-interval">
+            <div class="set-interval" id="set-interval">
                 <h3 class="timer-heading" id="timer-heading">Enter an interval in seconds</h3>
                 <input type="text" class="timer-text-input" id="timer-text-input">
                 <button type="submit" class="btn-timer-submit" id="btn-timer-submit">Submit</button>
             </div>
-            <div class="display-timer-wrapper">
-                <div class="display-timer">15</div>
-                <button class="btn-timer-resume" id="btn-timer-resume">Resume</button>
-                <button class="btn-timer-pause" id="btn-timer-pause">Pause</button>
+            <div class="display-timer-wrapper" id="display-timer-wrapper">
+                <div class="display-timer" id="display-timer">15</div>
+                <div>
+                    <button class="btn-timer-resume" id="btn-timer-resume">Resume</button>
+                    <button class="btn-timer-pause" id="btn-timer-pause">Pause</button>
+                </div>
             </div>
             <hr>
         </section>
-        <section class="" id="">
+        <section class="number-in" id="number-in">
             <p>Please enter the first number</p>
             <p>Please enter the next number</p>
-            <input type="text" class="input-area" id="">
-            <button>Submit</button>
+            <input type="text" class="number-in-input" id="number-in-input">
+            <button class="number-in-input" id="number-in-input">Submit</button>
             <hr>
         </section>
         <section class="display" id="display">
-            <div class="display-text">
+            <div class="display-output" id="display-output">
                 <h4>Output:</h4>
                 <p></p>
             </div>

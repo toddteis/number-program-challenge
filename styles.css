@@ -12,6 +12,7 @@
 html {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    font-size: 16px;
 }
 
 body {
@@ -51,8 +52,45 @@ section {
     padding: 5px;
 }
 
+button {
+    width: 80px;
+    height: 30px;
+    font-size: 1rem;
+}
+
+input {
+    height: 2rem;
+    padding: 3px;
+    font-size: 1rem;
+}
+
 .timer {
     display: flex;
     flex-direction: column;
 }
+
+.set-interval, .display-timer-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.display-timer {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 10px;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 50px;
+}
+
+
+
 
