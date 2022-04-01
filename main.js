@@ -21,11 +21,26 @@ btnTimerSubmit.addEventListener('click', () => {
         // start interval timer
         timer(setTimerInterval);
         // hide set-interval div
+        toggleIntervalDisplay();
         // show display-timer-wrapper
     }
 });
 
+// will show only the Set-Interval Section or the Display-Timer, Number-In & Output Sections
 
+function toggleIntervalDisplay() {
+    if (setIntervalDiv.classList.contains('hide')) {
+        setIntervalDiv.classList.remove('hide');
+        displayTimerDiv.classList.add('hide');
+        numberInDiv.classList.add('hide');
+        displayDiv.classList.add('hide');
+    } else {
+        setIntervalDiv.classList.add('hide');
+        displayTimerDiv.classList.remove('hide');
+        numberInDiv.classList.remove('hide');
+        displayDiv.classList.remove('hide');
+    }
+};
 
 // Core logic
 
