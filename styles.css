@@ -53,6 +53,10 @@ input {
     text-align: right;
 }
 
+
+
+/* TIMER SECTION */
+
 .timer {
     display: flex;
     flex-direction: column;
@@ -80,12 +84,21 @@ input {
     border-radius: 50px;
 }
 
+.timer-input-error {
+    color: red;
+    margin-bottom: 10px;
+}
+
+/* NUMBER-IN SECTION */
+
 .number-in {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+/* OUTPUT SECTION */
 
 .display-output p {
     width: 360px;
@@ -96,7 +109,3 @@ input {
 .hide {
     display: none;
 }
-
-
-
-
