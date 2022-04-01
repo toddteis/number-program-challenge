@@ -16,13 +16,12 @@ btnTimerSubmit.addEventListener('click', () => {
     if (isNaN(setTimerInterval) || setTimerInterval == 0) {
         timerInputError.classList.remove('hide');
     } else {
-        // if incorrect interval input previous, hide error message
+        // if incorrect interval input previously, hide error message
         if (!timerInputError.classList.contains('hide')) { timerInputError.classList.toggle('hide') };
         // start interval timer
         timer(setTimerInterval);
-        // hide set-interval div
+        // hide set-interval div, show display-timer div
         toggleIntervalDisplay();
-        // show display-timer-wrapper
     }
 });
 
@@ -42,10 +41,14 @@ function toggleIntervalDisplay() {
     }
 };
 
+// outputController: receive output from Core Logic, add html & display on webpage
+
 // Core logic
 
 function timer(para) {
     const intervalInMS = para * 1000;
-    console.log(`start interval timer is this interval: ${intervalInMS}ms`);
+    // console.log(`start interval timer is this interval: ${intervalInMS}ms`);
+    let timerId = setInterval(function () { console.log('hello') }, intervalInMS);
+    timerId;
 };
 
