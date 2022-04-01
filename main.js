@@ -1,13 +1,21 @@
-
-// User Interface
+// User Interface variables
 
 const btnTimerSubmit = document.getElementById("btn-timer-submit");
+const btnHaltResume = document.getElementById('btn-timer-halt-resume');
 const timerInputError = document.getElementById("timer-input-error");
 const setIntervalDiv = document.getElementById("set-interval");
 const displayTimerDiv = document.getElementById('display-timer-wrapper');
 const numberInDiv = document.getElementById('number-in');
 const displayDiv = document.getElementById('display');
 const displayTimer = document.getElementById('display-timer');
+
+let uiCounter;
+
+// Core logic variables
+
+let isTimerRunning = false;
+
+// User Interface
 
 btnTimerSubmit.addEventListener('click', () => {
     const timerTextInput = document.getElementById("timer-text-input").value;
@@ -21,11 +29,21 @@ btnTimerSubmit.addEventListener('click', () => {
         if (!timerInputError.classList.contains('hide')) { timerInputError.classList.toggle('hide') };
         // start interval timer
         timer(setTimerInterval);
-        uiTimer();
+        uiTimer('start');
         // hide set-interval div, show display-timer div
         toggleIntervalDisplay();
     }
 });
+
+btnHaltResume.addEventListener('click', () => {
+    // if timer is running then tell uiTimer to halt. change btn text to 'Resume Timer';
+    //uiTimer('halt');
+
+    // else the uiTimer is halted, then tell uiTimer to resume. chanage btn text to 'Halt Timer'
+    // uiTimer('resume');
+
+    // uiTimer();
+})
 
 // will show only the Set-Interval Section or the Display-Timer, Number-In & Output Sections
 
@@ -45,9 +63,10 @@ function toggleIntervalDisplay() {
 
 // Timer for the UI.
 
-function uiTimer() {
-    let count = 0;
-    let uiCounter = setInterval(function () {
+function uiTimer(command) {
+    let count = 1;
+    clearInterval(uiCounter);
+    uiCounter = setInterval(function () {
         console.log(count);
         displayTimer.textContent = count;
         count++;
