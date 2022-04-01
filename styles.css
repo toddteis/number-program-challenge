@@ -62,6 +62,7 @@ input {
     height: 2rem;
     padding: 3px;
     font-size: 1rem;
+    text-align: right;
 }
 
 .timer {
@@ -89,6 +90,13 @@ input {
     align-items: center;
     border: 1px solid black;
     border-radius: 50px;
+}
+
+.number-in {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 
