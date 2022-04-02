@@ -84,7 +84,7 @@ input {
     border-radius: 50px;
 }
 
-.timer-input-error {
+.timer-input-error, .number-in-input-error {
     color: red;
     margin-bottom: 10px;
 }
