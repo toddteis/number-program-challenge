@@ -108,6 +108,14 @@ function uiTimer(command) {
 
 // uiOutput: receive output from Core Logic, add html & display on webpage
 
+function uiOutput(para) {
+    let displayDiv = document.getElementById('display-output');
+    let newParaElement = document.createElement('p');
+    let originParaElement = displayDiv.querySelector('p');
+    newParaElement.textContent = para;
+    displayDiv.insertBefore(newParaElement, originParaElement);
+}
+
 // Program logic
 
 function programTimer(command, time) {
@@ -140,11 +148,8 @@ function numberCollection(num) {
 function programOutput(para) {
     if (para == 'printSortedOutput') {
         // This would need to be changed to suit another UI's output
-        // call uiOutput(numberRepository)
-
-        console.log('printSortedOutput');
-        console.log(numberRepository);
+        uiOutput(numberRepository);
     } else if (para == 'printFIB') {
-        console.log('printFIB');
+        uiOutput('printFIB');
     }
 }
