@@ -17,7 +17,7 @@ let count = 1;
 // Program logic variables
 
 let isTimerRunning = false;
-let coreIntervalTimer;
+let programIntervalTimer;
 let numberRepository = [];
 
 // User Interface
@@ -113,13 +113,12 @@ function uiTimer(command) {
 function programTimer(command, time) {
     if (command === 'start' || command === 'resume') {
         isTimerRunning = true;
-        coreIntervalTimer = setInterval(function () {
-
-            console.log(numberRepository);
+        programIntervalTimer = setInterval(function () {
+            programOutput('printSortedOutput');
         }, time);
         isTimerRunning = true;
     } else {
-        clearInterval(coreIntervalTimer);
+        clearInterval(programIntervalTimer);
         isTimerRunning = false;
     }
 };
@@ -132,3 +131,20 @@ function numberCollection(num) {
     }
 }
 
+// programOutput()
+// puts the numberRepository in number : frequency order and puts them in a string and calls uiOutput().
+// Added up the frequency of entries.
+// order them by frequency.
+// create a string and call the uiOutput()
+
+function programOutput(para) {
+    if (para == 'printSortedOutput') {
+        // This would need to be changed to suit another UI's output
+        // call uiOutput(numberRepository)
+
+        console.log('printSortedOutput');
+        console.log(numberRepository);
+    } else if (para == 'printFIB') {
+        console.log('printFIB');
+    }
+}
