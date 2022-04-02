@@ -10,6 +10,7 @@ const displayDiv = document.getElementById('display');
 const displayTimer = document.getElementById('display-timer');
 let intervalInMS;
 let uiIntervalTimer;
+let count = 1;
 
 // Core logic variables
 
@@ -68,7 +69,7 @@ function toggleIntervalDisplay() {
 // Timer for the UI.
 
 function uiTimer(command) {
-    let count = 1;
+    // let count = 1;
     if (command === 'start' || command === 'resume') {
         clearInterval(uiIntervalTimer);
         uiIntervalTimer = setInterval(function () {
