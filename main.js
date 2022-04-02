@@ -116,6 +116,12 @@ function uiOutput(para) {
     displayDiv.insertBefore(newParaElement, originParaElement);
 }
 
+function quit() {
+    uiTimer('quit');
+    programTimer('quit')
+    toggleIntervalDisplay();
+}
+
 // Program logic
 
 function programTimer(command, time) {
