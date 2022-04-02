@@ -8,12 +8,13 @@ const displayTimerDiv = document.getElementById('display-timer-wrapper');
 const numberInDiv = document.getElementById('number-in');
 const displayDiv = document.getElementById('display');
 const displayTimer = document.getElementById('display-timer');
-
-let uiCounter;
+let intervalInMS;
+let uiIntervalTimer;
 
 // Core logic variables
 
 let isTimerRunning = false;
+let coreIntervalTimer;
 
 // User Interface
 
@@ -25,10 +26,11 @@ btnTimerSubmit.addEventListener('click', () => {
     if (isNaN(setTimerInterval) || setTimerInterval == 0) {
         timerInputError.classList.remove('hide');
     } else {
+        intervalInMS = setTimerInterval * 1000;
         // if incorrect interval input previously, hide error message
         if (!timerInputError.classList.contains('hide')) { timerInputError.classList.toggle('hide') };
         // start interval timer
-        timer(setTimerInterval);
+        coreTimer('start', intervalInMS);
         uiTimer('start');
         // hide set-interval div, show display-timer div
         toggleIntervalDisplay();
@@ -36,13 +38,15 @@ btnTimerSubmit.addEventListener('click', () => {
 });
 
 btnHaltResume.addEventListener('click', () => {
-    // if timer is running then tell uiTimer to halt. change btn text to 'Resume Timer';
-    //uiTimer('halt');
-
-    // else the uiTimer is halted, then tell uiTimer to resume. chanage btn text to 'Halt Timer'
-    // uiTimer('resume');
-
-    // uiTimer();
+    if (isTimerRunning) {
+        uiTimer('halt');
+        coreTimer('halt', intervalInMS);
+        btnHaltResume.textContent = 'Resume Timer';
+    } else {
+        uiTimer('resume');
+        coreTimer('resume', intervalInMS);
+        btnHaltResume.textContent = 'Halt Timer';
+    }
 })
 
 // will show only the Set-Interval Section or the Display-Timer, Number-In & Output Sections
@@ -65,22 +69,34 @@ function toggleIntervalDisplay() {
 
 function uiTimer(command) {
     let count = 1;
-    clearInterval(uiCounter);
-    uiCounter = setInterval(function () {
-        console.log(count);
-        displayTimer.textContent = count;
-        count++;
-    }, 1000);
+    if (command === 'start' || command === 'resume') {
+        clearInterval(uiIntervalTimer);
+        uiIntervalTimer = setInterval(function () {
+            console.log(count);
+            displayTimer.textContent = count;
+            count++;
+        }, 1000);
+    } else {
+        clearInterval(uiIntervalTimer);
+    }
+
 }
 
 // outputController: receive output from Core Logic, add html & display on webpage
 
 // Core logic
 
-function timer(para) {
-    const intervalInMS = para * 1000;
-    // console.log(`start interval timer is this interval: ${intervalInMS}ms`);
-    let timerId = setInterval(function () { console.log('hello') }, intervalInMS);
-    timerId;
+function coreTimer(command, time) {
+    if (command === 'start' || command === 'resume') {
+        // clearInterval(coreIntervalTimer);
+        isTimerRunning = true;
+        coreIntervalTimer = setInterval(function () {
+
+            console.log('hello')
+        }, time);
+    } else {
+        clearInterval(coreIntervalTimer);
+        isTimerRunning = false;
+    }
 };
 
