@@ -2,7 +2,8 @@
 
 const btnTimerSubmit = document.getElementById("btn-timer-submit");
 const btnHaltResume = document.getElementById('btn-timer-halt-resume');
-const btnNumberInInput = document.getElementById('btn-number-in-input')
+const btnNumberInInput = document.getElementById('btn-number-in-input');
+const btnNumberInQuit = document.getElementById('btn-number-in-quit');
 const timerInputError = document.getElementById('timer-input-error');
 const numberInInputError = document.getElementById('number-in-input-error');
 const setIntervalDiv = document.getElementById("set-interval");
@@ -75,6 +76,10 @@ btnNumberInInput.addEventListener('click', () => {
     }
 })
 
+btnNumberInQuit.addEventListener('click', () => {
+    quit();
+})
+
 
 // will show only the Set-Interval Section or the Display-Timer, Number-In & Output Sections
 
@@ -120,6 +125,7 @@ function quit() {
     uiTimer('quit');
     programTimer('quit')
     toggleIntervalDisplay();
+    numberRepository = [];
 }
 
 // Program logic
