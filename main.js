@@ -18,6 +18,7 @@ let count = 1;
 
 let isTimerRunning = false;
 let coreIntervalTimer;
+let numberRepository = [];
 
 // User Interface
 
@@ -111,12 +112,12 @@ function uiTimer(command) {
 
 function programTimer(command, time) {
     if (command === 'start' || command === 'resume') {
-        // clearInterval(coreIntervalTimer);
         isTimerRunning = true;
         coreIntervalTimer = setInterval(function () {
 
-            console.log('hello')
+            console.log(numberRepository);
         }, time);
+        isTimerRunning = true;
     } else {
         clearInterval(coreIntervalTimer);
         isTimerRunning = false;
@@ -127,7 +128,7 @@ function numberCollection(num) {
     if (isNaN(num) || typeof (num) === 'string') {
         throw 'Is not a number';
     } else {
-        console.log('is a number');
+        numberRepository.push(num);
     }
 }
 
