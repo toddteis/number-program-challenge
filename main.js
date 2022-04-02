@@ -64,7 +64,13 @@ btnNumberInInput.addEventListener('click', () => {
         if (!numberInInputError.classList.contains('hide')) {
             numberInInputError.classList.toggle('hide')
         };
-        console.log(`the number is: ${inComingNumber}`);
+
+        try {
+            numberCollection(inComingNumber);
+        } catch (e) {
+            numberInInputError.classList.remove('hide');
+        }
+
     }
 })
 
@@ -99,8 +105,6 @@ function uiTimer(command) {
     }
 }
 
-
-
 // uiOutput: receive output from Core Logic, add html & display on webpage
 
 // Program logic
@@ -118,4 +122,12 @@ function programTimer(command, time) {
         isTimerRunning = false;
     }
 };
+
+function numberCollection(num) {
+    if (isNaN(num) || typeof (num) === 'string') {
+        throw 'Is not a number';
+    } else {
+        console.log('is a number');
+    }
+}
 
