@@ -154,7 +154,7 @@ function programTimer(command, time) {
 };
 //  || typeof (num) === 'string'
 function numberCollection(num) {
-    if (isNaN(num)) {
+    if (isNaN(num) || typeof (num) === "string") {
         throw 'Is not a number';
     } else {
         if (isFibonacci(num)) {
