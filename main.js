@@ -24,6 +24,14 @@ let isTimerRunning = false;
 let programIntervalTimer;
 let numberRepository = [];
 
+// add test data
+numberRepository.push(numberFactory(5, 1));
+numberRepository.push(numberFactory(6, 1));
+numberRepository.push(numberFactory(7, 1));
+numberRepository.push(numberFactory(8, 1));
+console.log(numberRepository);
+
+
 // User Interface
 
 btnTimerSubmit.addEventListener('click', () => {
@@ -150,6 +158,13 @@ function numberCollection(num) {
     if (isNaN(num) || typeof (num) === 'string') {
         throw 'Is not a number';
     } else {
+        // check if Fibonacci number, if true then call programOutput('printFib')
+        if (isFibonacci(num)) {
+            programOutput('printFib');
+        };
+        //check if number exists
+        // if doesn't exist, then create new number object and push to repo.
+        // if it does exist, then get number object index and +1 to frequency.
         numberRepository.push(num);
     }
 }
@@ -164,8 +179,29 @@ function programOutput(para) {
     if (para == 'printSortedOutput') {
         // This would need to be changed to suit another UI's output
         uiOutput(numberRepository);
-    } else if (para == 'printFIB') {
-        uiOutput('printFIB');
+    } else if (para == 'printFib') {
+        uiOutput('FIB');
     }
 }
 
+function isFibonacci(num) {
+    if (num === 0) { return true; }
+    let fibNumbers = [0, 1];
+    let lastFibIn = 1;
+    const limit = 50000;
+    const maxSequence = 1000;
+    for (let i = 2; i < limit; i++) {
+        if (fibNumbers.length < maxSequence) {
+            let arrLength = fibNumbers.length
+            let n1 = fibNumbers[arrLength - 1];
+            let n2 = fibNumbers[arrLength - 2];
+            let newFibNum = n1 + n2;
+            fibNumbers.push(newFibNum);
+            lastFibIn = newFibNum;
+            if (num === newFibNum) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
