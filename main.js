@@ -25,13 +25,6 @@ let isTimerRunning = false;
 let programIntervalTimer;
 let numberRepository = [];
 
-// add test data
-numberRepository.push(numberFactory(5, 1));
-numberRepository.push(numberFactory(6, 4));
-numberRepository.push(numberFactory(7, 2));
-numberRepository.push(numberFactory(8, 3));
-
-
 // User Interface
 
 btnTimerSubmit.addEventListener('click', () => {
@@ -170,7 +163,7 @@ function programTimer(command, time) {
         isTimerRunning = false;
     }
 };
-//  || typeof (num) === 'string'
+
 function numberCollection(num) {
     if (isNaN(num) || typeof (num) === "string") {
         throw 'Is not a number';
@@ -195,7 +188,6 @@ function numberCollection(num) {
 
 function programOutput(para) {
     if (para == 'printSortedOutput') {
-
         const sortedRepository = numberRepository.sort((a, b) => {
             if (a.frequency > b.frequency) { return -1 };
             if (a.frequency < b.frequency) { return 1 };
