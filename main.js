@@ -11,6 +11,7 @@ const displayTimerDiv = document.getElementById('display-timer-wrapper');
 const numberInDiv = document.getElementById('number-in');
 const displayDiv = document.getElementById('display');
 const displayTimer = document.getElementById('display-timer');
+let displayOutputDiv = document.getElementById('display-output');
 let intervalInMS;
 let uiIntervalTimer;
 let count = 1;
@@ -124,18 +125,35 @@ function uiTimer(command) {
 // uiOutput: receive output from Core Logic, add html & display on webpage
 
 function uiOutput(para) {
-    let displayDiv = document.getElementById('display-output');
     let newParaElement = document.createElement('p');
     let originParaElement = displayDiv.querySelector('p');
     newParaElement.textContent = para;
-    displayDiv.insertBefore(newParaElement, originParaElement);
+    displayOutputDiv.insertBefore(newParaElement, originParaElement);
 }
 
 function quit() {
     uiTimer('quit');
     programTimer('quit')
-    toggleIntervalDisplay();
+    programOutput('printSortedOutput');
+    uiOutput('Farewell, this output will disappear in 5 seconds.');
     numberRepository = [];
+    const quitTimer = setTimeout(finalCleanUp, 5000);
+    const timerTextInput = document.getElementById("timer-text-input");
+    timerTextInput.value = '';
+    const numberInTextInput = document.getElementById('number-in-input');
+    numberInTextInput.value = '';
+    count = 1;
+}
+
+function finalCleanUp() {
+    toggleIntervalDisplay();
+    displayTimer.textContent = '1';
+    while (displayOutputDiv.firstChild) {
+        displayOutputDiv.removeChild(displayOutputDiv.firstChild);
+    }
+    let newParaElement = document.createElement('p');
+    displayOutputDiv.append(newParaElement);
+
 }
 
 // Program logic
