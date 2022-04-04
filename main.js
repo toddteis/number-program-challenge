@@ -29,7 +29,6 @@ numberRepository.push(numberFactory(5, 1));
 numberRepository.push(numberFactory(6, 4));
 numberRepository.push(numberFactory(7, 2));
 numberRepository.push(numberFactory(8, 3));
-console.log(numberRepository);
 
 
 // User Interface
@@ -48,7 +47,7 @@ btnTimerSubmit.addEventListener('click', () => {
         };
         // start interval timers
         programTimer('start', intervalInMS);
-        uiTimer('start');
+        uiTimer('start'); console.log(numberRepository);
         // hide set-interval div, show display-timer div
         toggleIntervalDisplay();
     }
@@ -158,14 +157,21 @@ function numberCollection(num) {
     if (isNaN(num) || typeof (num) === 'string') {
         throw 'Is not a number';
     } else {
-        // check if Fibonacci number, if true then call programOutput('printFib')
         if (isFibonacci(num)) {
             programOutput('printFib');
         };
-        //check if number exists
-        // if doesn't exist, then create new number object and push to repo.
-        // if it does exist, then get number object index and +1 to frequency.
-        numberRepository.push(num);
+        // search repo for number and return array index if exists, otherwise returns -1.
+        const indexOfNumber = numberRepository.findIndex((num) => {
+            return num.number === number;
+        })
+        if (indexOfNumber === -1) {
+            // number doesn't exist, create new object and push it to the repo
+            const newNumber = numberFactory(number, 1);
+            numberRepository.push(newNumber);
+        } else if (indexOfNumber >= 0) {
+            // number exists, get objects index and update value by +1;
+            numberRepository[indexOfNumber].frequency += 1;
+        }
     }
 }
 
