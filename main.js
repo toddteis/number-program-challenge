@@ -17,6 +17,9 @@ let count = 1;
 
 // Program logic variables
 
+const numberFactory = (number, frequency) => {
+    return { number, frequency };
+};
 let isTimerRunning = false;
 let programIntervalTimer;
 let numberRepository = [];
@@ -165,3 +168,4 @@ function programOutput(para) {
         uiOutput('printFIB');
     }
 }
+
