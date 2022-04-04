@@ -26,9 +26,9 @@ let numberRepository = [];
 
 // add test data
 numberRepository.push(numberFactory(5, 1));
-numberRepository.push(numberFactory(6, 1));
-numberRepository.push(numberFactory(7, 1));
-numberRepository.push(numberFactory(8, 1));
+numberRepository.push(numberFactory(6, 4));
+numberRepository.push(numberFactory(7, 2));
+numberRepository.push(numberFactory(8, 3));
 console.log(numberRepository);
 
 
@@ -177,8 +177,22 @@ function numberCollection(num) {
 
 function programOutput(para) {
     if (para == 'printSortedOutput') {
-        // This would need to be changed to suit another UI's output
-        uiOutput(numberRepository);
+        // This would need to be changed to suit another UI's output or UI would need to have a function called uiOuput() that excepted a string and printed to the screen.
+        const sortedRepository = numberRepository.sort((a, b) => {
+            if (a.frequency > b.frequency) { return -1 };
+            if (a.frequency < b.frequency) { return 1 };
+            return 0;
+        })
+        let printStr;
+        sortedRepository.forEach(element => {
+            if (printStr === undefined) {
+                printStr = `${element.number}:${element.frequency}`;
+            } else {
+                printStr += `, ${element.number}:${element.frequency}`;
+            }
+
+        })
+        uiOutput(printStr);
     } else if (para == 'printFib') {
         uiOutput('FIB');
     }
