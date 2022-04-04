@@ -81,7 +81,7 @@ btnNumberInInput.addEventListener('click', () => {
 })
 
 btnNumberInQuit.addEventListener('click', () => {
-    quit();
+    uiQuit();
 })
 
 
@@ -124,13 +124,13 @@ function uiOutput(para) {
     displayOutputDiv.insertBefore(newParaElement, originParaElement);
 }
 
-function quit() {
+function uiQuit() {
     uiTimer('quit');
     programTimer('quit')
     programOutput('printSortedOutput');
     uiOutput('Farewell, this output will disappear in 5 seconds.');
     programCleanUp();
-    const quitTimer = setTimeout(finalCleanUp, 5000);
+    const quitTimer = setTimeout(uiFinalCleanUp, 5000);
     const timerTextInput = document.getElementById("timer-text-input");
     timerTextInput.value = '';
     const numberInTextInput = document.getElementById('number-in-input');
@@ -142,7 +142,7 @@ function quit() {
 // the final output string of numbers/frequencies and the farewell message before 
 // final clean up of variables and html elements.
 
-function finalCleanUp() {
+function uiFinalCleanUp() {
     toggleIntervalDisplay();
     displayTimer.textContent = '1';
     while (displayOutputDiv.firstChild) {
