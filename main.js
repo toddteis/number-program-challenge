@@ -169,28 +169,22 @@ function numberCollection(num) {
     }
 }
 
-// programOutput()
-// puts the numberRepository in number : frequency order and puts them in a string and calls uiOutput().
-// Added up the frequency of entries.
-// order them by frequency.
-// create a string and call the uiOutput()
-
 function programOutput(para) {
     if (para == 'printSortedOutput') {
-        // This would need to be changed to suit another UI's output or UI would need to have a function called uiOuput() that excepted a string and printed to the screen.
+
         const sortedRepository = numberRepository.sort((a, b) => {
             if (a.frequency > b.frequency) { return -1 };
             if (a.frequency < b.frequency) { return 1 };
             return 0;
         })
         let printStr;
+        // build printStr:
         sortedRepository.forEach(element => {
             if (printStr === undefined) {
                 printStr = `${element.number}:${element.frequency}`;
             } else {
                 printStr += `, ${element.number}:${element.frequency}`;
             }
-
         })
         uiOutput(printStr);
     } else if (para == 'printFib') {
