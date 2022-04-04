@@ -47,7 +47,7 @@ btnTimerSubmit.addEventListener('click', () => {
         };
         // start interval timers
         programTimer('start', intervalInMS);
-        uiTimer('start'); console.log(numberRepository);
+        uiTimer('start');
         // hide set-interval div, show display-timer div
         toggleIntervalDisplay();
     }
@@ -152,21 +152,21 @@ function programTimer(command, time) {
         isTimerRunning = false;
     }
 };
-
+//  || typeof (num) === 'string'
 function numberCollection(num) {
-    if (isNaN(num) || typeof (num) === 'string') {
+    if (isNaN(num)) {
         throw 'Is not a number';
     } else {
         if (isFibonacci(num)) {
             programOutput('printFib');
         };
         // search repo for number and return array index if exists, otherwise returns -1.
-        const indexOfNumber = numberRepository.findIndex((num) => {
-            return num.number === number;
+        const indexOfNumber = numberRepository.findIndex((element) => {
+            return element.number === num;
         })
         if (indexOfNumber === -1) {
             // number doesn't exist, create new object and push it to the repo
-            const newNumber = numberFactory(number, 1);
+            const newNumber = numberFactory(num, 1);
             numberRepository.push(newNumber);
         } else if (indexOfNumber >= 0) {
             // number exists, get objects index and update value by +1;
