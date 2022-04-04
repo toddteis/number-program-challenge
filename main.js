@@ -115,7 +115,7 @@ function uiTimer(command) {
     }
 }
 
-// uiOutput: receive output from Core Logic, add html & display on webpage
+// uiOutput: receive output from Program Logic, add html & display on webpage
 
 function uiOutput(para) {
     let newParaElement = document.createElement('p');
@@ -129,7 +129,7 @@ function quit() {
     programTimer('quit')
     programOutput('printSortedOutput');
     uiOutput('Farewell, this output will disappear in 5 seconds.');
-    numberRepository = [];
+    programCleanUp();
     const quitTimer = setTimeout(finalCleanUp, 5000);
     const timerTextInput = document.getElementById("timer-text-input");
     timerTextInput.value = '';
@@ -137,6 +137,10 @@ function quit() {
     numberInTextInput.value = '';
     count = 1;
 }
+
+// finalCleanUp is called within quit() with 5 sec delay. this allows to display 
+// the final output string of numbers/frequencies and the farewell message before 
+// final clean up of variables and html elements.
 
 function finalCleanUp() {
     toggleIntervalDisplay();
@@ -228,4 +232,8 @@ function isFibonacci(num) {
         }
     }
     return false;
+}
+
+function programCleanUp() {
+    numberRepository = [];
 }
