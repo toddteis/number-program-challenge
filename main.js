@@ -22,22 +22,6 @@ let isTimerRunning = false;
 let programIntervalTimer;
 let numberRepository = [];
 
-// will show only the Set-Interval Section or the Display-Timer, Number-In & Output Sections
-
-function toggleIntervalDisplay() {
-  if (setIntervalDiv.classList.contains('hide')) {
-    setIntervalDiv.classList.remove('hide');
-    displayTimerDiv.classList.add('hide');
-    numberInDiv.classList.add('hide');
-    displayDiv.classList.add('hide');
-  } else {
-    setIntervalDiv.classList.add('hide');
-    displayTimerDiv.classList.remove('hide');
-    numberInDiv.classList.remove('hide');
-    displayDiv.classList.remove('hide');
-  }
-}
-
 function programCleanUp() {
   numberRepository = [];
 }
@@ -127,6 +111,22 @@ function programTimer(command, time) {
 }
 
 // USER INTERFACE
+
+// will show only the Set-Interval Section or the Display-Timer, Number-In & Output Sections
+
+function toggleIntervalDisplay() {
+  if (setIntervalDiv.classList.contains('hide')) {
+    setIntervalDiv.classList.remove('hide');
+    displayTimerDiv.classList.add('hide');
+    numberInDiv.classList.add('hide');
+    displayDiv.classList.add('hide');
+  } else {
+    setIntervalDiv.classList.add('hide');
+    displayTimerDiv.classList.remove('hide');
+    numberInDiv.classList.remove('hide');
+    displayDiv.classList.remove('hide');
+  }
+}
 
 // finalCleanUp is called within quit() with 5 sec delay. this allows to display
 // the final output string of numbers/frequencies and the farewell message before
